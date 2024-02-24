@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &205478214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205478215}
+  - component: {fileID: 205478216}
+  m_Layer: 0
+  m_Name: Map Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205478215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205478214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5602668, y: 1.4550312, z: 0.0028010067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &205478216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205478214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31db3a3ba6f6d9a78c4155894fe34c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefabs:
+  - {fileID: 4916775649517539850, guid: 8b5af800779a9c5b4b06d1496205957e, type: 3}
+  - {fileID: 2710293848549404731, guid: 5376819ad4a84cc46bf225742355c69e, type: 3}
+  - {fileID: 8268592431744286563, guid: 0d4135f35d3d0526f8300ce24fcfb65c, type: 3}
+  NumofRooms: 3
+  currentRoomIndex: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +287,7 @@ GameObject:
   - component: {fileID: 960014564}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,8 +374,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1912140247
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d744b0536be587540af13d006bac51fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -412,3 +462,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 960014561}
+  - {fileID: 205478215}
