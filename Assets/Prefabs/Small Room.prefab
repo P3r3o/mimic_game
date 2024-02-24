@@ -558,6 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4047448201324160266}
   - component: {fileID: 6017565728886042577}
+  - component: {fileID: 1930967005105593860}
   m_Layer: 0
   m_Name: Small Room
   m_TagString: Untagged
@@ -635,6 +636,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1930967005105593860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268592431744286563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f56cdcd16d1e8438de5a74603fdaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleFurnitureTypes:
+  - {fileID: 2871457638693201576, guid: 3a89e91e3cfd887438439095c6082899, type: 3}
+  minimumNumberOfFurniture: 1
+  maximumNumberOfFurniture: 2
 --- !u!1 &8381818923671792437
 GameObject:
   m_ObjectHideFlags: 0
