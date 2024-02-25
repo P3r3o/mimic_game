@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Furniture : MonoBehaviour
@@ -27,6 +28,12 @@ public class Furniture : MonoBehaviour
     private float waitTimer;
     private bool isCharging;
 
+    public void RestartCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
     void Start() {
         chargeTimer = chargeTime;
         waitTimer = waitTime;
@@ -46,6 +53,7 @@ public class Furniture : MonoBehaviour
         // Monster is hiding and player started reloading
         if (isMonster && !isHunting && playerScript.isReloading) {
             isHunting = true;
+            playerScript.killedMonsterInRoom = true;
 
             // Monster transformation
 
@@ -88,6 +96,14 @@ public class Furniture : MonoBehaviour
                     chargeTimer = chargeTime;
                 }
             }
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {   
+        // Collision with player
+        if (other.gameObject.CompareTag("Player") && isHunting && isMonster) {
+            RestartCurrentScene();
         }
     }
 
