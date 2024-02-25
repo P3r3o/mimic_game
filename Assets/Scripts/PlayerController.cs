@@ -84,10 +84,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Baby"))
         {
-            Destroy(other.gameObject);
+            Animator babyAnimator = other.transform.GetComponent<Animator>();
+            babyAnimator.SetBool("taken", true);
             movingLeft = false;
             animator.SetBool("hasBaby", true);
-            Debug.Log("baby get!");
             justGotBaby = true;
         }    
     }
