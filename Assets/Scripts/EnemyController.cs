@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -23,6 +24,24 @@ public class EnemyController : MonoBehaviour
         isCharging = false;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerController>();
+    }
+
+    void OnEnable() {
+        // destroy all furniture
+        GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Furniture");
+
+        foreach (GameObject obj in otherObjects) {
+            Destroy(obj);
+        }
+        StartCoroutine(spookyDarkness());
+    }
+    IEnumerator spookyDarkness()
+    {
+        GameObject.Find("Canvas/darkness").GetComponent<Image>().color = new Color(0, 0, 0, 1 );
+
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject.Find("Canvas/darkness").GetComponent<Image>().color = new Color(0, 0, 0, 0);
     }
 
     // Hunting
