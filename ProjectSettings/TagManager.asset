@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Furniture
   - Baby
+  - Monster
   layers:
   - Default
   - TransparentFX
