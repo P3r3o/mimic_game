@@ -100,12 +100,18 @@ public class Furniture : MonoBehaviour
     }
     
     private void OnCollisionEnter2D(Collision2D other)
-    {   
-        // Collision with player
-        if (other.gameObject.CompareTag("Player") && isHunting && isMonster) {
-            RestartCurrentScene();
-        }
+{
+    if (other.gameObject.CompareTag("Player") && isHunting && isMonster) {
+        StartCoroutine(DeathAndRestart(other.transform.GetComponent<Animator>()));
     }
+}
+
+private IEnumerator DeathAndRestart(Animator playerAnimator)
+{
+    playerAnimator.SetBool("isDead", true);
+    yield return new WaitForSeconds(1);
+    RestartCurrentScene();
+}
 
     // Turns the furniture into a monster!
     public void monstrify() {
