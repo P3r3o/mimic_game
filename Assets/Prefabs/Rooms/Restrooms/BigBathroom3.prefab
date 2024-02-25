@@ -177,9 +177,12 @@ MonoBehaviour:
   - {fileID: 6546871397482684046, guid: 16ffd06d9e1f8d94fab59868eec6d101, type: 3}
   furnitureLocations: []
   allFurnitureInRoom: []
-  predeterminedFurniture: []
-  minimumNumberOfFurniture: 1
-  maximumNumberOfFurniture: 2
+  predeterminedFurniture:
+  - {fileID: 6081250784754307633}
+  - {fileID: 4602646496530300929}
+  - {fileID: 4268920903748135816}
+  minimumNumberOfFurniture: 3
+  maximumNumberOfFurniture: 4
 --- !u!1 &1900631940497000514
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +770,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 891444608231399055, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
   m_PrefabInstance: {fileID: 2696650218585390480}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6081250784754307633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8144931761115787169, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
+  m_PrefabInstance: {fileID: 2696650218585390480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3389022692696453158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -921,7 +929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -959,6 +967,11 @@ PrefabInstance:
 --- !u!4 &1835832254141191505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
+  m_PrefabInstance: {fileID: 4252574794081801628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4602646496530300929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 350098401643468189, guid: e33885573a75bff448ca908bca89efaa, type: 3}
   m_PrefabInstance: {fileID: 4252574794081801628}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9199253115277085559
@@ -1021,5 +1034,10 @@ PrefabInstance:
 --- !u!4 &1647292358973050258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7599283805785081573, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
+  m_PrefabInstance: {fileID: 9199253115277085559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4268920903748135816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4941591210865893631, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
   m_PrefabInstance: {fileID: 9199253115277085559}
   m_PrefabAsset: {fileID: 0}

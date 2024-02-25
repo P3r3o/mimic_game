@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public bool justGotBaby = false;
     public bool isAlive = true;
+
+    public GameObject canvasGameObject;
     
     void Update()
     {
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
                         Vector3 playerPosition = transform.position;
                         Vector3 fromPlayerToHit = (hitPosition - playerPosition).normalized;
                         Quaternion bloodSplatterRotation = Quaternion.FromToRotation(Vector3.up, fromPlayerToHit) * Quaternion.Euler(0, 0, 90);
-                        GameObject blood = Instantiate(bloodSplatter, new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0), bloodSplatterRotation);
+                        GameObject blood = Instantiate(bloodSplatter, new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, -1), bloodSplatterRotation);
                         blood.transform.SetParent(hit.collider.gameObject.transform.parent, false);
                         Destroy(hit.collider.gameObject);
                         killedMonsterInRoom = true;

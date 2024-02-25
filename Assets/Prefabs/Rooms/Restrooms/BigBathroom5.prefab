@@ -357,9 +357,12 @@ MonoBehaviour:
   - {fileID: 6546871397482684046, guid: 16ffd06d9e1f8d94fab59868eec6d101, type: 3}
   furnitureLocations: []
   allFurnitureInRoom: []
-  predeterminedFurniture: []
-  minimumNumberOfFurniture: 1
-  maximumNumberOfFurniture: 2
+  predeterminedFurniture:
+  - {fileID: 7478287242789044252}
+  - {fileID: 2791913134859824151}
+  - {fileID: 5970709500779388842}
+  minimumNumberOfFurniture: 3
+  maximumNumberOfFurniture: 4
 --- !u!1 &5966432091067506226
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +765,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
+--- !u!1 &5970709500779388842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4941591210865893631, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
+  m_PrefabInstance: {fileID: 1605594489498107733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9168805429246507440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7599283805785081573, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
@@ -895,6 +903,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 891444608231399055, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
   m_PrefabInstance: {fileID: 1639498179380293565}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7478287242789044252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8144931761115787169, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
+  m_PrefabInstance: {fileID: 1639498179380293565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2478407579713485194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -917,7 +930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -955,6 +968,11 @@ PrefabInstance:
 --- !u!4 &7620831664011591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
+  m_PrefabInstance: {fileID: 2478407579713485194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2791913134859824151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 350098401643468189, guid: e33885573a75bff448ca908bca89efaa, type: 3}
   m_PrefabInstance: {fileID: 2478407579713485194}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2743209618011591356

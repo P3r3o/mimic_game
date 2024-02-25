@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -16,11 +15,7 @@ public class EnemyController : MonoBehaviour
     private float waitTimer;
     private bool isCharging;
 
-    public void RestartCurrentScene()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
-    }
+    public GameObject gameOverScreen;
 
     void Start() {
         chargeTimer = chargeTime;
@@ -69,11 +64,11 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            StartCoroutine(DeathAndRestart(other.transform));
+            StartCoroutine(DeathScreen(other.transform));
         }
     }
 
-    private IEnumerator DeathAndRestart(Transform player)
+    private IEnumerator DeathScreen(Transform player)
     {
         PlayerController playerScript = player.GetComponent<PlayerController>();
         playerScript.isAlive = false;
@@ -89,7 +84,6 @@ public class EnemyController : MonoBehaviour
         rb.isKinematic = true; 
 
         yield return new WaitForSeconds(2);
-        rb.isKinematic = false;
-        RestartCurrentScene();
+        playerScript.canvasGameObject.SetActive(true);
     }
 }

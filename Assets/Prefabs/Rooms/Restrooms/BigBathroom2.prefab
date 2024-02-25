@@ -183,9 +183,11 @@ MonoBehaviour:
   - {fileID: 6546871397482684046, guid: 16ffd06d9e1f8d94fab59868eec6d101, type: 3}
   furnitureLocations: []
   allFurnitureInRoom: []
-  predeterminedFurniture: []
-  minimumNumberOfFurniture: 1
-  maximumNumberOfFurniture: 2
+  predeterminedFurniture:
+  - {fileID: 3263839264484159292}
+  - {fileID: 7857577557956953538}
+  minimumNumberOfFurniture: 2
+  maximumNumberOfFurniture: 4
 --- !u!1 &1331507528760979617
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +866,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 891444608231399055, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
   m_PrefabInstance: {fileID: 2018498152574839395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7857577557956953538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8144931761115787169, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
+  m_PrefabInstance: {fileID: 2018498152574839395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2995087406000568993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -924,6 +931,11 @@ PrefabInstance:
 --- !u!4 &859819929701202540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2485425741425852621, guid: e33885573a75bff448ca908bca89efaa, type: 3}
+  m_PrefabInstance: {fileID: 2995087406000568993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3263839264484159292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 350098401643468189, guid: e33885573a75bff448ca908bca89efaa, type: 3}
   m_PrefabInstance: {fileID: 2995087406000568993}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4554657313583442948

@@ -99,10 +99,10 @@ public class MapController : MonoBehaviour
 
         Vector2 entrancePosition = doorTransform.position;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        float offset = 1.5f;
+        float offset = 0.5f;
 
         if (playerMovingLeft) {
-            offset = -1.5f;
+            offset = -0.5f;
         }
 
         player.transform.position = new Vector2(entrancePosition.x + offset, entrancePosition.y);

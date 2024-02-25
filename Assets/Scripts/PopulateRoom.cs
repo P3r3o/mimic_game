@@ -23,7 +23,7 @@ public class PopulateRoom : MonoBehaviour
             furnitureLocations.Add(possibleFurnitureLocations.GetChild(i).gameObject);
         }
 
-        int currentNumberOfFurniture = 0;
+        int currentNumberOfFurniture = predeterminedFurniture.Count;
         minimumNumberOfFurniture = Random.Range(minimumNumberOfFurniture, maximumNumberOfFurniture);
 
         while (currentNumberOfFurniture < minimumNumberOfFurniture) {
@@ -31,7 +31,7 @@ public class PopulateRoom : MonoBehaviour
             int furnitureIndex = Random.Range(0, possibleFurnitureTypes.Length);
             
             GameObject furniture = furnitureLocations[locationIndex];
-            GameObject newFurniture = Instantiate(possibleFurnitureTypes[furnitureIndex], new Vector3(furniture.transform.position.x, furniture.transform.position.y, -1), Quaternion.identity);
+            GameObject newFurniture = Instantiate(possibleFurnitureTypes[furnitureIndex], new Vector3(furniture.transform.position.x, furniture.transform.position.y, -2), Quaternion.identity);
             newFurniture.transform.SetParent(gameObject.transform, false);
             allFurnitureInRoom.Add(newFurniture);
 

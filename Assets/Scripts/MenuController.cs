@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
     public void Instructions() {
-        instructionText.enabled = true;
+        instructionText.enabled = !instructionText.enabled;
     }
     public void Exit() {
         Application.Quit();

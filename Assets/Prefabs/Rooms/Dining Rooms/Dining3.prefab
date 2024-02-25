@@ -254,7 +254,7 @@ MonoBehaviour:
   predeterminedFurniture:
   - {fileID: 4724792878566800105}
   minimumNumberOfFurniture: 2
-  maximumNumberOfFurniture: 4
+  maximumNumberOfFurniture: 3
 --- !u!1 &5551185610702822838
 GameObject:
   m_ObjectHideFlags: 0

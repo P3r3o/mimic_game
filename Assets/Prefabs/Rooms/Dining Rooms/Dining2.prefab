@@ -357,9 +357,10 @@ MonoBehaviour:
   - {fileID: 8347913584555619559, guid: f15647aba8c18914d9c619cf17a1b24a, type: 3}
   furnitureLocations: []
   allFurnitureInRoom: []
-  predeterminedFurniture: []
+  predeterminedFurniture:
+  - {fileID: 2070195529567026253}
   minimumNumberOfFurniture: 2
-  maximumNumberOfFurniture: 4
+  maximumNumberOfFurniture: 3
 --- !u!1 &4983280771882760656
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +926,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c457d5ed0eb534bab043b3bdde061c, type: 3}
+--- !u!1 &2070195529567026253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4250070130769043041, guid: 10c457d5ed0eb534bab043b3bdde061c, type: 3}
+  m_PrefabInstance: {fileID: 2756633541307343404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5783680067662910744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8503435983956686644, guid: 10c457d5ed0eb534bab043b3bdde061c, type: 3}

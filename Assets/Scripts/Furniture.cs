@@ -40,7 +40,7 @@ public class Furniture : MonoBehaviour
     public void Update() {
         // Monster is hiding and player started reloading
         if (isMonster && playerScript.isReloading) {
-            Instantiate(enemy, new Vector3(transform.position.x, transform.position.y, -2), Quaternion.identity);
+            Instantiate(enemy, new Vector3(transform.position.x, transform.position.y, -3), Quaternion.identity);
             Destroy(gameObject);
         }
     }
