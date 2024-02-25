@@ -86,8 +86,12 @@ public class MapController : MonoBehaviour
         // Set everything in the current room to inactive
         if (currentRoom != null)
         {
-            currentRoom.SetActive(false);
-        }
+            if (playerMovingLeft) {
+                currentRoom.SetActive(false);
+            } else {
+                Destroy(currentRoom);
+            }
+        } 
 
         // Entering a new room
         if (currentRoomIndex >= visitedRooms.Count) {
