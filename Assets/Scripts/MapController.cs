@@ -9,13 +9,17 @@ public class MapController : MonoBehaviour
     private PlayerController playerScript;
     private bool playerMovingLeft;
 
-    public GameObject[] roomPrefabs; // Assign in Inspector
+    public GameObject[] roomPrefabs; 
     public int numOfRooms;
     private GameObject currentRoom;
     private List<GameObject> visitedRooms = new List<GameObject>();
     public int currentRoomIndex;
+    private int[] roomArray;
+    private int[] monsterArray;
 
-    private int[] RoomArray;
+    public int minNumOfMonsters;
+    public int maxNumOfMonsters;
+    private int numOfMonsters = 0;
 
     private static int[] GenerateRoomArray(int numOfRooms, int numOfRoomTypes)
     {
@@ -44,8 +48,8 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
-        RoomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
-        Debug.Log(RoomArray.Length);
+        roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
+        Debug.Log(roomArray.Length);
         currentRoomIndex = 0;
         ChangeRoom();
     }
@@ -72,7 +76,7 @@ public class MapController : MonoBehaviour
         // Entering a new room
         if (currentRoomIndex >= visitedRooms.Count) {
             Debug.Log("Added room");
-            currentRoom = Instantiate(roomPrefabs[RoomArray[currentRoomIndex]], Vector3.zero, Quaternion.identity);
+            currentRoom = Instantiate(roomPrefabs[roomArray[currentRoomIndex]], Vector3.zero, Quaternion.identity);
             visitedRooms.Add(currentRoom);
         } 
         
@@ -101,6 +105,9 @@ public class MapController : MonoBehaviour
         // Moving to the right
         else {
             doorTransform = currentRoom.transform.Find("Doors/Left Door");
+
+            // Set one furniture to imposter on the way back 
+
         } 
 
 
