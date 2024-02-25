@@ -57,11 +57,17 @@ public class Furniture : MonoBehaviour
 
             // Monster transformation
             // TODO: Assign animator to furniture from monster prefab
-            Animator animator = gameObject.GetComponent<Animator>();
-                if (animator == null) {
-                    animator = gameObject.AddComponent<Animator>();
-                }
-            
+            GameObject prefabWithAnimator = Resources.Load<GameObject>("mimic");
+            Animator prefabAnimator = prefabWithAnimator.GetComponent<Animator>();
+
+            // Assuming this script is attached to the GameObject that needs to change its animation
+            Animator thisAnimator = GetComponent<Animator>();
+
+            // Copy the Animator Controller from the prefab to this GameObject
+            if (prefabAnimator != null && thisAnimator != null) {
+                thisAnimator.runtimeAnimatorController = prefabAnimator.runtimeAnimatorController;
+                thisAnimator.SetBool("isMimic", true);
+            }
             // Close doors
 
             Debug.Log("THE HUNT IS ON!!!");
