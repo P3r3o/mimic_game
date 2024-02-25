@@ -26,7 +26,7 @@ public class Furniture : MonoBehaviour
         furnitureChildren = roomScript.furnitureChildren;
         
         // Move furniture
-        if (Random.Range(0, 1) == 0) {
+        if (Random.Range(0, 2) == 0) {
             int index = Random.Range(0, furnitureChildren.Count);
             GameObject furnitureToMonstrify = furnitureChildren[index];
             transform.position = furnitureToMonstrify.transform.position;
