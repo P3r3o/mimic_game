@@ -43,5 +43,7 @@ public class Furniture : MonoBehaviour
             spriteRenderer.sprite = possibleSprites[index];
             Debug.Log("Changed appearance of sprite");
         }
+        
+        this.gameObject.tag = "Monster";
     }
 }

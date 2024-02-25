@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Vector2 mousePos;
     public Camera cam;
-    public int bulletsRemaining = 10; 
+    public int bulletsRemaining = 8; 
     public int bulletsInChamber = 2;
+
+    public bool isReloading = false; 
     public AudioSource gunSound;
 
     
@@ -30,32 +32,32 @@ public class PlayerController : MonoBehaviour
 
         bulletsRemainingText.text = "Bullets Remaining: " + bulletsRemaining.ToString();
         bulletsInChamberText.text = "Bullets in Chamber: " + bulletsInChamber.ToString();
+
         if (isMoving)
         {
             movement = (mousePos - rb.position).normalized;
         }
+
         else
         {
             movement = Vector2.zero;
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
         if (Input.GetButtonDown("Fire1") && bulletsInChamber > 0)
-        {
-            shoot();
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.gameObject.CompareTag("Furniture"))
-                {
-                    Debug.Log("Clicked on object with tag 'Monster'");
-                }
-            }  
-            bulletsInChamber--;
+        {   
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             
-        }
-        if (Input.GetKeyDown(KeyCode.R)) {
-            reload();
+            if (hit.collider != null && (hit.collider.gameObject.CompareTag("Monster") || hit.collider.gameObject.CompareTag("Furniture")))
+            {
+                Shoot();
+
+                // If you shot a monster
+                if (hit.collider.gameObject.CompareTag("Monster")) {
+                    Destroy(hit.collider.gameObject);
+                }
+            }
         }
     }
 
@@ -79,18 +81,30 @@ public class PlayerController : MonoBehaviour
         }    
     }
 
-    private void shoot()
+    private void Shoot()
     {
         animator.SetBool("hasBaby", false);
         animator.SetBool("isShooting", true);
         gunSound.Play();
+        bulletsInChamber--;
+
+        if (bulletsInChamber <= 0) {
+            StartCoroutine(Reload());
+        }
+
         //add lighting effect
     }
-    public void reload()
+    public IEnumerator Reload()
     {
+        isReloading = true;
+
+        yield return new WaitForSeconds(5f);
+
         if (bulletsInChamber < 2 && bulletsRemaining > 0){
             bulletsInChamber = 2;
             bulletsRemaining -= 2;
         }
+
+        isReloading = false;
     }
 }
