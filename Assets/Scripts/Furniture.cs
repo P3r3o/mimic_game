@@ -31,6 +31,9 @@ public class Furniture : MonoBehaviour
             GameObject furnitureToMonstrify = furnitureChildren[index];
             transform.position = furnitureToMonstrify.transform.position;
 
+            // change tag of furniture to monster
+            furnitureToMonstrify.gameObject.tag = "Monster";
+
             Debug.Log("Moved furniture");
         }
 
