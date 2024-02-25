@@ -23,8 +23,10 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        animator.SetBool("isShooting", false);
         bool isMoving = Input.GetKey(KeyCode.W);
         animator.SetBool("isWalking", isMoving);
+
 
         bulletsRemainingText.text = "Bullets Remaining: " + bulletsRemaining.ToString();
         bulletsInChamberText.text = "Bullets in Chamber: " + bulletsInChamber.ToString();
@@ -44,11 +46,11 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (hit.collider.gameObject.CompareTag("Monster"))
+                if (hit.collider.gameObject.CompareTag("Furniture"))
                 {
                     Debug.Log("Clicked on object with tag 'Monster'");
                 }
-            }   
+            }  
             bulletsInChamber--;
             
         }
@@ -72,12 +74,15 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             movingLeft = false;
+            animator.SetBool("hasBaby", true);
             Debug.Log("baby get!");
         }    
     }
 
     private void shoot()
     {
+        animator.SetBool("hasBaby", false);
+        animator.SetBool("isShooting", true);
         gunSound.Play();
         //add lighting effect
     }
