@@ -172,7 +172,7 @@ MonoBehaviour:
   - {fileID: 2710293848549404731, guid: 5376819ad4a84cc46bf225742355c69e, type: 3}
   - {fileID: 8268592431744286563, guid: 0d4135f35d3d0526f8300ce24fcfb65c, type: 3}
   - {fileID: 7385242997484710951, guid: b7a2222f96b37854296c0664ada1bac6, type: 3}
-  numOfRooms: 3
+  numOfRooms: 2
   currentRoomIndex: 0
   minimumNumberOfMonsters: 1
   maximumNumberOfMonsters: 2

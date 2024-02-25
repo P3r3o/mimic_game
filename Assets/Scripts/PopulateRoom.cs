@@ -6,7 +6,8 @@ public class PopulateRoom : MonoBehaviour
 {
     private static Transform possibleFurnitureLocations;
     public GameObject[] possibleFurnitureTypes;
-    private static List<GameObject> furnitureChildren;
+    public List<GameObject> furnitureChildren;
+    public List<GameObject> allFurnitureInRoom;
     public int minimumNumberOfFurniture = 2;
     public int maximumNumberOfFurniture = 4;
 
@@ -14,6 +15,7 @@ public class PopulateRoom : MonoBehaviour
     {
         possibleFurnitureLocations = transform.Find("Furniture");
         furnitureChildren = new List<GameObject>();
+        allFurnitureInRoom = new List<GameObject>();
 
         for (int i = 0; i < possibleFurnitureLocations.childCount; i++)
         {
@@ -30,6 +32,7 @@ public class PopulateRoom : MonoBehaviour
             GameObject furniture = furnitureChildren[locationIndex];
             GameObject newFurniture = Instantiate(possibleFurnitureTypes[furnitureIndex], new Vector3(furniture.transform.position.x, furniture.transform.position.y, -1), Quaternion.identity);
             newFurniture.transform.SetParent(gameObject.transform, false);
+            allFurnitureInRoom.Add(newFurniture);
 
             furnitureChildren.RemoveAt(locationIndex);
             currentNumberOfFurniture++;

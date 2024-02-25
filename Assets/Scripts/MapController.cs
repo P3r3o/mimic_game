@@ -58,11 +58,10 @@ public class MapController : MonoBehaviour
         minimumNumberOfMonsters = UnityEngine.Random.Range(minimumNumberOfMonsters, maximumNumberOfMonsters);
 
         while (currNumOfMonsters < minimumNumberOfMonsters) {
-            int index = UnityEngine.Random.Range(0, roomsWithoutMonsters.Count);
+            int index = UnityEngine.Random.Range(0, roomsWithoutMonsters.Count - 1);
             monsters[index] = true;
             currNumOfMonsters++;
             roomsWithoutMonsters.RemoveAt(index);
-            Debug.Log("Monster!");
         }
 
 
@@ -74,11 +73,9 @@ public class MapController : MonoBehaviour
     {
         roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
         monsterArray = GenerateMonsterArray(numOfRooms, minimumNumberOfMonsters, maximumNumberOfMonsters);
-        Debug.Log(roomArray.Length);
         currentRoomIndex = 0;
         ChangeRoom();
     }
-    
 
     public void ChangeRoom()
     {
@@ -89,18 +86,11 @@ public class MapController : MonoBehaviour
         // Set everything in the current room to inactive
         if (currentRoom != null)
         {
-            GameObject[] allFurniture = GameObject.FindGameObjectsWithTag("Furniture");
-            foreach (GameObject obj in allFurniture)
-            {
-                obj.SetActive(false);
-            }
             currentRoom.SetActive(false);
-            Debug.Log("Neutered room");
         }
 
         // Entering a new room
         if (currentRoomIndex >= visitedRooms.Count) {
-            Debug.Log("Added room");
             currentRoom = Instantiate(roomPrefabs[roomArray[currentRoomIndex]], Vector3.zero, Quaternion.identity);
             visitedRooms.Add(currentRoom);
         } 
@@ -109,14 +99,6 @@ public class MapController : MonoBehaviour
         else {
             currentRoom = visitedRooms[currentRoomIndex];
             currentRoom.SetActive(true);
-            
-            // Loop through all the children of the currentRoom
-            foreach (Transform child in currentRoom.transform)
-            {
-                Debug.Log("mruh");
-                // Set each child game object to active
-                child.gameObject.SetActive(true);
-            }
         }
         
         
@@ -130,6 +112,19 @@ public class MapController : MonoBehaviour
         // Moving to the right
         else {
             doorTransform = currentRoom.transform.Find("Doors/Left Door");
+
+            // If we're walking back into a room with a monster, then spawn a monster!
+            if (monsterArray[currentRoomIndex]) {
+                PopulateRoom roomScript = currentRoom.GetComponent<PopulateRoom>();
+                List<GameObject> allFurniture = roomScript.allFurnitureInRoom;
+                int index = UnityEngine.Random.Range(0, allFurniture.Count);
+                GameObject monsterFurniture = allFurniture[index];
+                Furniture monstrifyScript = monsterFurniture.GetComponent<Furniture>();
+                Debug.Log(monsterFurniture);
+                Debug.Log(monstrifyScript);
+                
+                monstrifyScript.monstrify();
+            }
         } 
 
 
