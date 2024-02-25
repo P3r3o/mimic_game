@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     public bool isReloading = false; 
     public AudioSource gunSound;
-
     
     void Update()
     {
