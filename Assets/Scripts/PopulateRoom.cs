@@ -28,8 +28,8 @@ public class PopulateRoom : MonoBehaviour
             int furnitureIndex = Random.Range(0, possibleFurnitureTypes.Length);
             
             GameObject furniture = furnitureChildren[locationIndex];
-            GameObject newFurtniture = Instantiate(possibleFurnitureTypes[furnitureIndex], new Vector3(furniture.transform.position.x, furniture.transform.position.y, -1), Quaternion.identity);
-            newFurtniture.transform.SetParent(gameObject.transform, false);
+            GameObject newFurniture = Instantiate(possibleFurnitureTypes[furnitureIndex], new Vector3(furniture.transform.position.x, furniture.transform.position.y, -1), Quaternion.identity);
+            newFurniture.transform.SetParent(gameObject.transform, false);
 
             furnitureChildren.RemoveAt(locationIndex);
             currentNumberOfFurniture++;

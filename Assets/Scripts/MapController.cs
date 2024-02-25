@@ -15,11 +15,10 @@ public class MapController : MonoBehaviour
     private List<GameObject> visitedRooms = new List<GameObject>();
     public int currentRoomIndex;
     private int[] roomArray;
-    private int[] monsterArray;
 
-    public int minNumOfMonsters;
-    public int maxNumOfMonsters;
-    private int numOfMonsters = 0;
+    private bool[] monsterArray;
+    public int minimumNumberOfMonsters;
+    public int maximumNumberOfMonsters;
 
     private static int[] GenerateRoomArray(int numOfRooms, int numOfRoomTypes)
     {
@@ -45,10 +44,36 @@ public class MapController : MonoBehaviour
         return rooms;
     }
 
+    private static bool[] GenerateMonsterArray(int numOfRooms, int minimumNumberOfMonsters, int maximumNumberOfMonsters) 
+    {
+        bool[] monsters = new bool[numOfRooms];
+        List<int> roomsWithoutMonsters = new List<int>();
+
+        for (int i = 0; i < numOfRooms; i++) {
+            roomsWithoutMonsters.Add(i);
+            monsters[i] = false;
+        }
+
+        int currNumOfMonsters = 0;
+        minimumNumberOfMonsters = UnityEngine.Random.Range(minimumNumberOfMonsters, maximumNumberOfMonsters);
+
+        while (currNumOfMonsters < minimumNumberOfMonsters) {
+            int index = UnityEngine.Random.Range(0, roomsWithoutMonsters.Count);
+            monsters[index] = true;
+            currNumOfMonsters++;
+            roomsWithoutMonsters.RemoveAt(index);
+            Debug.Log("Monster!");
+        }
+
+
+        return monsters;
+    }
+
 
     private void Start()
     {
         roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
+        monsterArray = GenerateMonsterArray(numOfRooms, minimumNumberOfMonsters, maximumNumberOfMonsters);
         Debug.Log(roomArray.Length);
         currentRoomIndex = 0;
         ChangeRoom();
@@ -105,9 +130,6 @@ public class MapController : MonoBehaviour
         // Moving to the right
         else {
             doorTransform = currentRoom.transform.Find("Doors/Left Door");
-
-            // Set one furniture to imposter on the way back 
-
         } 
 
 
