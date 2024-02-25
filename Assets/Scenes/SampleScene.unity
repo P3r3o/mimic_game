@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 205478214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5602668, y: 1.4550312, z: 0.0028010067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,8 +171,11 @@ MonoBehaviour:
   - {fileID: 4916775649517539850, guid: 8b5af800779a9c5b4b06d1496205957e, type: 3}
   - {fileID: 2710293848549404731, guid: 5376819ad4a84cc46bf225742355c69e, type: 3}
   - {fileID: 8268592431744286563, guid: 0d4135f35d3d0526f8300ce24fcfb65c, type: 3}
-  NumofRooms: 10
+  - {fileID: 7385242997484710951, guid: b7a2222f96b37854296c0664ada1bac6, type: 3}
+  numOfRooms: 3
   currentRoomIndex: 0
+  minNumOfMonsters: 0
+  maxNumOfMonsters: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
