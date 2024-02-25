@@ -80,11 +80,11 @@ public class PlayerController : MonoBehaviour
         rb.rotation = lerpAngle;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Baby"))
+        if (other.gameObject.CompareTag("Baby"))
         {
-            Animator babyAnimator = other.transform.GetComponent<Animator>();
+            Animator babyAnimator = other.gameObject.transform.GetComponent<Animator>();
             babyAnimator.SetBool("taken", true);
             movingLeft = false;
             animator.SetBool("hasBaby", true);

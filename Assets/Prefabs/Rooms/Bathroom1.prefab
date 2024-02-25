@@ -340,6 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3081680872906093782}
   - component: {fileID: 9504739707228150}
+  - component: {fileID: 9056684317259317175}
   m_Layer: 0
   m_Name: Bathroom1
   m_TagString: Untagged
@@ -417,6 +418,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9056684317259317175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725010204210808157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f56cdcd16d1e8438de5a74603fdaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleFurnitureTypes: []
+  furnitureChildren: []
+  allFurnitureInRoom: []
+  minimumNumberOfFurniture: 2
+  maximumNumberOfFurniture: 4
 --- !u!1 &2813145772141715153
 GameObject:
   m_ObjectHideFlags: 0
