@@ -17,8 +17,8 @@ public class MapController : MonoBehaviour
     private int[] roomArray;
 
     private bool[] monsterArray;
-    public static int minimumNumberOfMonsters = 1;
-    public static int maximumNumberOfMonsters = 3;
+    public int minimumNumberOfMonsters;
+    public int maximumNumberOfMonsters;
 
     private static int[] GenerateRoomArray(int numOfRooms, int numOfRoomTypes)
     {
@@ -44,7 +44,7 @@ public class MapController : MonoBehaviour
         return rooms;
     }
 
-    private static bool[] GenerateMonsterArray(int numOfRooms) 
+    private static bool[] GenerateMonsterArray(int numOfRooms, int minimumNumberOfMonsters, int maximumNumberOfMonsters) 
     {
         bool[] monsters = new bool[numOfRooms];
         List<int> roomsWithoutMonsters = new List<int>();
@@ -73,7 +73,7 @@ public class MapController : MonoBehaviour
     private void Start()
     {
         roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
-        monsterArray = GenerateMonsterArray(numOfRooms);
+        monsterArray = GenerateMonsterArray(numOfRooms, minimumNumberOfMonsters, maximumNumberOfMonsters);
         Debug.Log(roomArray.Length);
         currentRoomIndex = 0;
         ChangeRoom();
