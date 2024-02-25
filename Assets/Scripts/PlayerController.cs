@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI bulletsRemainingText;
     public TextMeshProUGUI bulletsInChamberText;
+    public GameObject bloodSplatter;
     public Animator animator;
     public bool movingLeft = true;
     public float moveSpeed = 5f;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
                 // If you shot a monster
                 if (hit.collider.gameObject.CompareTag("Monster")) {
+                    Instantiate(bloodSplatter, hit.collider.gameObject.transform.position, Quaternion.identity);
                     Destroy(hit.collider.gameObject);
                 }
             }

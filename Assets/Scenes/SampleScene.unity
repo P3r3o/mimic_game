@@ -539,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletsRemainingText: {fileID: 1694061531}
   bulletsInChamberText: {fileID: 840535210}
+  bloodSplatter: {fileID: 6807085082123506700, guid: 7be0a55ecb9f20053a069f1fa823dae6, type: 3}
   animator: {fileID: 960014565}
   movingLeft: 1
   moveSpeed: 2.5
