@@ -10,25 +10,25 @@ public class Furniture : MonoBehaviour
 
     private Transform room;
     private PopulateRoom roomScript;
-    private List<GameObject> allFurnitureInRoom;
+    private List<GameObject> furnitureChildren;
 
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteIndex = Random.Range(0, possibleSprites.Count);
         spriteRenderer.sprite = possibleSprites[spriteIndex];
         possibleSprites.RemoveAt(spriteIndex);
-
-        room = this.transform.parent;
-        roomScript = room.GetComponent<PopulateRoom>();
-        allFurnitureInRoom = roomScript.allFurnitureInRoom;
     }
 
     // Turns the furniture into a monster!
     public void monstrify() {
+        room = this.transform.parent;
+        roomScript = room.GetComponent<PopulateRoom>();
+        furnitureChildren = roomScript.furnitureChildren;
+        
         // Move furniture
-        if (false) {
-            int index = Random.Range(0, allFurnitureInRoom.Count);
-            GameObject furnitureToMonstrify = allFurnitureInRoom[index];
+        if (Random.Range(0, 1) == 0) {
+            int index = Random.Range(0, furnitureChildren.Count);
+            GameObject furnitureToMonstrify = furnitureChildren[index];
             transform.position = furnitureToMonstrify.transform.position;
 
             Debug.Log("Moved furniture");
