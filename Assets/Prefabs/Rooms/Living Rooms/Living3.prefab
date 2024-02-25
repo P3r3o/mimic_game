@@ -293,6 +293,7 @@ Transform:
   m_Children:
   - {fileID: 3635448336856968260}
   - {fileID: 1272519862055665327}
+  - {fileID: 9131116140956530190}
   m_Father: {fileID: 4830300276863287340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2087650975538280284
@@ -364,6 +365,37 @@ Transform:
   - {fileID: 6938594264560074753}
   - {fileID: 7906313455360187547}
   m_Father: {fileID: 4830300276863287340}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4494338677612337545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9131116140956530190}
+  m_Layer: 0
+  m_Name: Furniture Spawn (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9131116140956530190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494338677612337545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.72, y: -3.93, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3855329618330451741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5132982372888518508
 GameObject:
@@ -578,6 +610,7 @@ MonoBehaviour:
   - {fileID: 868443986608514293, guid: 13bce907b65bb7e4b989b0c2f9c4cfba, type: 3}
   - {fileID: 8347913584555619559, guid: f15647aba8c18914d9c619cf17a1b24a, type: 3}
   - {fileID: 6546871397482684046, guid: 16ffd06d9e1f8d94fab59868eec6d101, type: 3}
+  - {fileID: 4627104050051782762, guid: a04e140d8ef7b1a4d841152c26d7620b, type: 3}
   furnitureLocations: []
   allFurnitureInRoom: []
   predeterminedFurniture:
