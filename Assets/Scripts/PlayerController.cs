@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private FieldofView FieldofView;
     public float moveSpeed = 5f;
     public float rotationSpeed = 2f;
     private Rigidbody2D rb;
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        FieldofView.SetOrgin(rb.position);
+        FieldofView.SetAimDirection(rb.position); //buggy
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -33,4 +36,9 @@ public class PlayerController : MonoBehaviour
         float lerpAngle = Mathf.LerpAngle(rb.rotation, finalAngle, rotationSpeed * Time.fixedDeltaTime);
         rb.rotation = lerpAngle;
     }
+    private static Vector3 GetVectorFromAngle(float angle) {
+        float angleRad = angle * (Mathf.PI/180f);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+    }
+    
 }
