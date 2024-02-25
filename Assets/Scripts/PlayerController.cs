@@ -25,8 +25,10 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        animator.SetBool("isShooting", false);
         bool isMoving = Input.GetKey(KeyCode.W);
         animator.SetBool("isWalking", isMoving);
+
 
         bulletsRemainingText.text = "Bullets Remaining: " + bulletsRemaining.ToString();
         bulletsInChamberText.text = "Bullets in Chamber: " + bulletsInChamber.ToString();
@@ -74,12 +76,15 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             movingLeft = false;
+            animator.SetBool("hasBaby", true);
             Debug.Log("baby get!");
         }    
     }
 
     private void Shoot()
     {
+        animator.SetBool("hasBaby", false);
+        animator.SetBool("isShooting", true);
         gunSound.Play();
         bulletsInChamber--;
 
