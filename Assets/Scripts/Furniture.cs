@@ -11,7 +11,7 @@ public class Furniture : MonoBehaviour
 
     private Transform room;
     private PopulateRoom roomScript;
-    private List<GameObject> furnitureChildren;
+    private List<GameObject> furnitureLocations;
 
     private bool isMonster = false;
     private bool isHunting = false;
@@ -109,7 +109,7 @@ public class Furniture : MonoBehaviour
             }
         }
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
 {
     if (other.gameObject.CompareTag("Player") && isHunting && isMonster) {
@@ -137,12 +137,12 @@ private IEnumerator DeathAndRestart(Transform player)
         isMonster = true;
         room = this.transform.parent;
         roomScript = room.GetComponent<PopulateRoom>();
-        furnitureChildren = roomScript.furnitureChildren;
+        furnitureLocations = roomScript.furnitureLocations;
         
         // Move furniture
-        if (Random.Range(0, 2) == 0) {
-            int index = Random.Range(0, furnitureChildren.Count);
-            GameObject furnitureToMonstrify = furnitureChildren[index];
+        if (Random.Range(0, 2) == 0 && roomScript.predeterminedFurniture.Contains(gameObject)) {
+            int index = Random.Range(0, furnitureLocations.Count);
+            GameObject furnitureToMonstrify = furnitureLocations[index];
             transform.position = furnitureToMonstrify.transform.position;
 
             // change tag of furniture to monster
