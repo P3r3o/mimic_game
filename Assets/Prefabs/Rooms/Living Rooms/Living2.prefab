@@ -34,6 +34,7 @@ Transform:
   - {fileID: 6385294553262943135}
   - {fileID: 6725096724360355703}
   - {fileID: 3175804691319276473}
+  - {fileID: 2260501769206294458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1178879824545571470
@@ -101,14 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleFurnitureTypes:
-  - {fileID: 1348714061089615579, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
   - {fileID: 868443986608514293, guid: 13bce907b65bb7e4b989b0c2f9c4cfba, type: 3}
-  - {fileID: 4250070130769043041, guid: 10c457d5ed0eb534bab043b3bdde061c, type: 3}
   - {fileID: 8347913584555619559, guid: f15647aba8c18914d9c619cf17a1b24a, type: 3}
-  - {fileID: 129747502494563767, guid: a3c8bf847503d3241bb9d6e165d0debb, type: 3}
-  furnitureChildren: []
+  - {fileID: 6546871397482684046, guid: 16ffd06d9e1f8d94fab59868eec6d101, type: 3}
+  furnitureLocations: []
   allFurnitureInRoom: []
-  predeterminedFurniture: []
+  predeterminedFurniture:
+  - {fileID: 3497017701987316347}
   minimumNumberOfFurniture: 2
   maximumNumberOfFurniture: 4
 --- !u!1 &2082211318771406260
@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 3605806635150264451}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.08, y: -0.88, z: 0}
+  m_LocalPosition: {x: 5.13, y: -2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 4283837833864222837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.99, y: 3.82, z: 0}
+  m_LocalPosition: {x: 4.8, y: 1.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -437,37 +437,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &5934367340649041720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 717789779480306063}
-  m_Layer: 0
-  m_Name: Furniture Spawn (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &717789779480306063
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934367340649041720}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.17, y: -4.19, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6385294553262943135}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6203007109013518086
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,68 +473,6 @@ Transform:
   - {fileID: 1931748494178351824}
   - {fileID: 9022516795131310437}
   m_Father: {fileID: 5471352356654536820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6217618971217823001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7507354658651993261}
-  m_Layer: 0
-  m_Name: Furniture Spawn (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7507354658651993261
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6217618971217823001}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.48, y: 3.61, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6385294553262943135}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6330037567935587181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8264833203862559170}
-  m_Layer: 0
-  m_Name: Furniture Spawn (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8264833203862559170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6330037567935587181}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: -0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6385294553262943135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7005533041498895360
 GameObject:
@@ -675,9 +582,6 @@ Transform:
   m_Children:
   - {fileID: 1912590722924893820}
   - {fileID: 954385257146227000}
-  - {fileID: 7507354658651993261}
-  - {fileID: 717789779480306063}
-  - {fileID: 8264833203862559170}
   m_Father: {fileID: 5471352356654536820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8155620060622246451
@@ -965,4 +869,71 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5553904383914208656, guid: 74875aabcceecac428c6c25d7ae3661e, type: 3}
   m_PrefabInstance: {fileID: 2022158773082094414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2463609014771440800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5471352356654536820}
+    m_Modifications:
+    - target: {fileID: 1348714061089615579, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_Name
+      value: Bed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0039095655
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+--- !u!4 &2260501769206294458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4426639557832227610, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+  m_PrefabInstance: {fileID: 2463609014771440800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3497017701987316347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1348714061089615579, guid: 9e53561381ea33b428d9cc844bd5e694, type: 3}
+  m_PrefabInstance: {fileID: 2463609014771440800}
   m_PrefabAsset: {fileID: 0}
