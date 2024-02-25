@@ -8,6 +8,7 @@ public class PopulateRoom : MonoBehaviour
     public GameObject[] possibleFurnitureTypes;
     public List<GameObject> furnitureChildren;
     public List<GameObject> allFurnitureInRoom;
+    public List<GameObject> predeterminedFurniture;
     public int minimumNumberOfFurniture = 2;
     public int maximumNumberOfFurniture = 4;
 
@@ -37,5 +38,7 @@ public class PopulateRoom : MonoBehaviour
             furnitureChildren.RemoveAt(locationIndex);
             currentNumberOfFurniture++;
         }
+
+        allFurnitureInRoom.AddRange(predeterminedFurniture);
     }
 }
