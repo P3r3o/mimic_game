@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI bulletsRemainingText;
     public TextMeshProUGUI bulletsInChamberText;
+    public Animator animator;
     public bool movingLeft = true;
     public float moveSpeed = 5f;
     public float rotationSpeed = 2f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Vector2 movement;
     private Vector2 mousePos;
     public Camera cam;
@@ -19,17 +20,23 @@ public class PlayerController : MonoBehaviour
     public int bulletsInChamber = 2;
     public AudioSource gunSound;
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
+    
     void Update()
     {
+        bool isMoving = Input.GetKey(KeyCode.W);
+        animator.SetBool("isWalking", isMoving);
+
         bulletsRemainingText.text = "Bullets Remaining: " + bulletsRemaining.ToString();
         bulletsInChamberText.text = "Bullets in Chamber: " + bulletsInChamber.ToString();
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (isMoving)
+        {
+            movement = (mousePos - rb.position).normalized;
+        }
+        else
+        {
+            movement = Vector2.zero;
+        }
+
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetButtonDown("Fire1") && bulletsInChamber > 0)
         {
