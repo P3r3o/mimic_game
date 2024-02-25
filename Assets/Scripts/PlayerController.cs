@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI bulletsRemainingText;
     public TextMeshProUGUI bulletsInChamberText;
+    public GameObject bloodSplatter;
     public Animator animator;
     public bool movingLeft = true;
     public float moveSpeed = 5f;
@@ -24,8 +25,10 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        animator.SetBool("isShooting", false);
         bool isMoving = Input.GetKey(KeyCode.W);
         animator.SetBool("isWalking", isMoving);
+
 
         bulletsRemainingText.text = "Bullets Remaining: " + bulletsRemaining.ToString();
         bulletsInChamberText.text = "Bullets in Chamber: " + bulletsInChamber.ToString();
@@ -52,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
                 // If you shot a monster
                 if (hit.collider.gameObject.CompareTag("Monster")) {
+                    Instantiate(bloodSplatter, hit.collider.gameObject.transform.position, Quaternion.identity);
                     Destroy(hit.collider.gameObject);
                 }
             }
@@ -73,12 +77,15 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             movingLeft = false;
+            animator.SetBool("hasBaby", true);
             Debug.Log("baby get!");
         }    
     }
 
     private void Shoot()
     {
+        animator.SetBool("hasBaby", false);
+        animator.SetBool("isShooting", true);
         gunSound.Play();
         bulletsInChamber--;
 
