@@ -46,6 +46,7 @@ public class Furniture : MonoBehaviour
         // Monster is hiding and player started reloading
         if (isMonster && !isHunting && playerScript.isReloading) {
             isHunting = true;
+            playerScript.killedMonsterInRoom = true;
 
             // Monster transformation
 

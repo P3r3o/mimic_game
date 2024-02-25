@@ -16,10 +16,6 @@ public class MapController : MonoBehaviour
     public int currentRoomIndex;
     private int[] roomArray;
 
-    private bool[] monsterArray;
-    public int minimumNumberOfMonsters;
-    public int maximumNumberOfMonsters;
-
     private static int[] GenerateRoomArray(int numOfRooms, int numOfRoomTypes)
     {
         if(numOfRoomTypes < 1)
@@ -44,35 +40,9 @@ public class MapController : MonoBehaviour
         return rooms;
     }
 
-    private static bool[] GenerateMonsterArray(int numOfRooms, int minimumNumberOfMonsters, int maximumNumberOfMonsters) 
-    {
-        bool[] monsters = new bool[numOfRooms];
-        List<int> roomsWithoutMonsters = new List<int>();
-
-        for (int i = 0; i < numOfRooms; i++) {
-            roomsWithoutMonsters.Add(i);
-            monsters[i] = false;
-        }
-
-        int currNumOfMonsters = 0;
-        minimumNumberOfMonsters = UnityEngine.Random.Range(minimumNumberOfMonsters, maximumNumberOfMonsters);
-
-        while (currNumOfMonsters < minimumNumberOfMonsters) {
-            int index = UnityEngine.Random.Range(0, roomsWithoutMonsters.Count - 1);
-            monsters[index] = true;
-            currNumOfMonsters++;
-            roomsWithoutMonsters.RemoveAt(index);
-        }
-
-
-        return monsters;
-    }
-
-
     private void Start()
     {
         roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
-        monsterArray = GenerateMonsterArray(numOfRooms, minimumNumberOfMonsters, maximumNumberOfMonsters);
         currentRoomIndex = 0;
         ChangeRoom();
     }
@@ -118,23 +88,23 @@ public class MapController : MonoBehaviour
             doorTransform = currentRoom.transform.Find("Doors/Left Door");
 
             // If we're walking back into a room with a monster, then spawn a monster!
-            if (monsterArray[currentRoomIndex]) {
-                PopulateRoom roomScript = currentRoom.GetComponent<PopulateRoom>();
-                List<GameObject> allFurniture = roomScript.allFurnitureInRoom;
-                int index = UnityEngine.Random.Range(0, allFurniture.Count);
-                GameObject monsterFurniture = allFurniture[index];
-                Furniture monstrifyScript = monsterFurniture.GetComponent<Furniture>();
-                Debug.Log(monsterFurniture);
-                Debug.Log(monstrifyScript);
-                
-                monstrifyScript.monstrify();
-            }
+            PopulateRoom roomScript = currentRoom.GetComponent<PopulateRoom>();
+            List<GameObject> allFurniture = roomScript.allFurnitureInRoom;
+            int index = UnityEngine.Random.Range(0, allFurniture.Count);
+            GameObject monsterFurniture = allFurniture[index];
+            Furniture monstrifyScript = monsterFurniture.GetComponent<Furniture>();
+            monstrifyScript.monstrify();
         } 
 
 
         Vector2 entrancePosition = doorTransform.position;
-        // Move the player to the entrance of the new room
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = entrancePosition;
+        float offset = 1.5f;
+
+        if (playerMovingLeft) {
+            offset = -1.5f;
+        }
+
+        player.transform.position = new Vector2(entrancePosition.x + offset, entrancePosition.y);
     }
 }

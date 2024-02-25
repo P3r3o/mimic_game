@@ -10,16 +10,23 @@ public class RightDoor : MonoBehaviour
     private PlayerController playerScript;
     private bool playerMovingRight;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {   
         playerObject = GameObject.Find("Player");
         playerScript = playerObject.GetComponent<PlayerController>();
         playerMovingRight = !playerScript.movingLeft;
-        if (other.CompareTag("Player") && playerMovingRight)
-        {
-            MapController MapController = FindObjectOfType<MapController>();
-            MapController.currentRoomIndex--;
-            MapController.ChangeRoom();
-        } 
+
+        // Collision with player
+        if (other.gameObject.CompareTag("Player") && playerMovingRight) {
+            // You can only leave the room once the monster is killed
+            if (playerScript.killedMonsterInRoom || playerScript.justGotBaby)
+            {
+                MapController MapController = FindObjectOfType<MapController>();
+                MapController.currentRoomIndex--;
+                MapController.ChangeRoom();
+                playerScript.justGotBaby = false;
+                playerScript.killedMonsterInRoom = false;
+            } 
+        }
     }
 }

@@ -10,14 +10,14 @@ public class LeftDoor : MonoBehaviour
     private PlayerController playerScript;
     private bool playerMovingLeft;
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {   
         playerObject = GameObject.Find("Player");
         playerScript = playerObject.GetComponent<PlayerController>();
         playerMovingLeft = playerScript.movingLeft;
-        if (other.CompareTag("Player") && playerMovingLeft)
+        
+        if (other.gameObject.CompareTag("Player") && playerMovingLeft)
         {
-            Debug.Log("He cooking");
             MapController MapController = FindObjectOfType<MapController>();
             MapController.currentRoomIndex++;
             MapController.ChangeRoom();

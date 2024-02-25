@@ -19,9 +19,12 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public int bulletsRemaining = 8; 
     public int bulletsInChamber = 2;
-
     public bool isReloading = false; 
     public AudioSource gunSound;
+
+    public bool killedMonsterInRoom = false;
+
+    public bool justGotBaby = false;
     
     void Update()
     {
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetButtonDown("Fire1") && bulletsInChamber > 0)
+        if (Input.GetButtonDown("Fire1") && bulletsInChamber > 0 && !movingLeft)
         {   
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             
@@ -55,21 +58,14 @@ public class PlayerController : MonoBehaviour
 
                 // If you shot a monster
                 if (hit.collider.gameObject.CompareTag("Monster")) {
-                    // Position of the hit object
                     Vector3 hitPosition = hit.collider.gameObject.transform.position;
-
-                    // Position of the player
                     Vector3 playerPosition = transform.position;
-
-                    // Calculate the direction from the hit object to the player (since the player faces north, we want the opposite direction)
                     Vector3 fromPlayerToHit = (hitPosition - playerPosition).normalized;
-
-                    // Calculate the rotation from the direction vector, assuming that the blood splatter's 'up' should be facing away from the player
                     Quaternion bloodSplatterRotation = Quaternion.FromToRotation(Vector3.up, fromPlayerToHit) * Quaternion.Euler(0, 0, 90);
-
                     GameObject blood = Instantiate(bloodSplatter, new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0), bloodSplatterRotation);
                     blood.transform.SetParent(hit.collider.gameObject.transform.parent, false);
                     Destroy(hit.collider.gameObject);
+                    killedMonsterInRoom = true;
                 }
             }
         }
@@ -92,6 +88,7 @@ public class PlayerController : MonoBehaviour
             movingLeft = false;
             animator.SetBool("hasBaby", true);
             Debug.Log("baby get!");
+            justGotBaby = true;
         }    
     }
 
