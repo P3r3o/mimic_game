@@ -727,9 +727,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f56cdcd16d1e8438de5a74603fdaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleFurnitureTypes: []
+  possibleFurnitureTypes:
+  - {fileID: 4941591210865893631, guid: b2f6d996bb839c6438afc230d630db43, type: 3}
+  - {fileID: 8144931761115787169, guid: 92c606f92f2d83e4c8e1e28773feb71f, type: 3}
+  - {fileID: 350098401643468189, guid: e33885573a75bff448ca908bca89efaa, type: 3}
   furnitureChildren: []
   allFurnitureInRoom: []
+  predeterminedFurniture: []
   minimumNumberOfFurniture: 2
   maximumNumberOfFurniture: 4
 --- !u!1001 &1780819586234679919

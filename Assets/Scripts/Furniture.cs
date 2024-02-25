@@ -56,7 +56,12 @@ public class Furniture : MonoBehaviour
             playerScript.killedMonsterInRoom = true;
 
             // Monster transformation
-
+            // TODO: Assign animator to furniture from monster prefab
+            Animator animator = gameObject.GetComponent<Animator>();
+                if (animator == null) {
+                    animator = gameObject.AddComponent<Animator>();
+                }
+            
             // Close doors
 
             Debug.Log("THE HUNT IS ON!!!");
@@ -102,14 +107,22 @@ public class Furniture : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
 {
     if (other.gameObject.CompareTag("Player") && isHunting && isMonster) {
-        StartCoroutine(DeathAndRestart(other.transform.GetComponent<Animator>()));
+        StartCoroutine(DeathAndRestart(other.transform));
     }
 }
 
-private IEnumerator DeathAndRestart(Animator playerAnimator)
+private IEnumerator DeathAndRestart(Transform player)
 {
-    playerAnimator.SetBool("isDead", true);
-    yield return new WaitForSeconds(1);
+    Animator playerAnimator = player.GetComponent<Animator>();
+    playerAnimator.SetTrigger("dead");
+    Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+    if (rb != null)
+    {
+        rb.velocity = Vector2.zero; // Stop any current movement immediately
+        rb.isKinematic = true; // Prevent the Rigidbody from being affected by physics
+    }
+    yield return new WaitForSeconds(2);
+    rb.isKinematic = false;
     RestartCurrentScene();
 }
 
