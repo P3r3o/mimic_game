@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool movingLeft = true;
     public float moveSpeed = 5f;
     public float rotationSpeed = 2f;
     private Rigidbody2D rb;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public int bulletsRemaining = 10; 
     public int bulletsInChamber = 2;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -32,5 +33,15 @@ public class PlayerController : MonoBehaviour
         float finalAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f; 
         float lerpAngle = Mathf.LerpAngle(rb.rotation, finalAngle, rotationSpeed * Time.fixedDeltaTime);
         rb.rotation = lerpAngle;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Baby"))
+        {
+            Destroy(other.gameObject);
+            movingLeft = false;
+            Debug.Log("baby get!");
+        }    
     }
 }

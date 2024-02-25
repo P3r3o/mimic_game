@@ -5,24 +5,37 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    private GameObject playerObject;
+    private PlayerController playerScript;
+    private bool playerMovingLeft;
+
     public GameObject[] roomPrefabs; // Assign in Inspector
-    public int NumofRooms;
+    public int numOfRooms;
     private GameObject currentRoom;
+    private List<GameObject> visitedRooms = new List<GameObject>();
     public int currentRoomIndex;
 
     private int[] RoomArray;
 
-    private static int[] GenerateRoomArray(int N, int num_rooms)
+    private static int[] GenerateRoomArray(int numOfRooms, int numOfRoomTypes)
     {
-        if(num_rooms < 1)
+        if(numOfRoomTypes < 1)
         {
-            throw new ArgumentException("num_rooms must be at least 1", nameof(num_rooms));
+            throw new ArgumentException("numOfRoomTypes must be at least 1", nameof(numOfRoomTypes));
         }
+
         System.Random random = new System.Random();
-        int[] rooms = new int[N];
-        for(int i = 0; i < N; i++)
+        int[] rooms = new int[numOfRooms];
+
+        for(int i = 0; i < numOfRooms; i++)
         {
-            rooms[i] = random.Next(0, num_rooms);
+            // Set the final room 
+            if (i == numOfRooms - 1) {
+                rooms[i] = numOfRoomTypes - 1;
+                break;
+            } 
+
+            rooms[i] = random.Next(0, numOfRoomTypes - 1);
         }
 
         return rooms;
@@ -31,28 +44,66 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
-        RoomArray = GenerateRoomArray(NumofRooms, roomPrefabs.Length);
+        RoomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
+        Debug.Log(RoomArray.Length);
         currentRoomIndex = 0;
-        ChangeRoom(0);
+        ChangeRoom();
     }
     
 
-    public void ChangeRoom(int roomIndex)
+    public void ChangeRoom()
     {
-        // Destroy the current room if it exists
-        // Currently destroying all furniture for testing, but needs to be removed bc furniture data is not stored
+        playerObject = GameObject.Find("Player");
+        playerScript = playerObject.GetComponent<PlayerController>();
+        playerMovingLeft = playerScript.movingLeft;
+
+        // Set everything in the current room to inactive
         if (currentRoom != null)
+        {
+            GameObject[] allFurniture = GameObject.FindGameObjectsWithTag("Furniture");
+            foreach (GameObject obj in allFurniture)
             {
-                GameObject[] allFurniture = GameObject.FindGameObjectsWithTag("Furniture");
-                foreach (GameObject obj in allFurniture)
-                {
-                    Destroy(obj);
-                }
-                Destroy(currentRoom);
+                obj.SetActive(false);
             }
-        // Instantiate the new room
-        currentRoom = Instantiate(roomPrefabs[RoomArray[roomIndex]], Vector3.zero, Quaternion.identity);
-        Transform doorTransform = currentRoom.transform.Find("Doors/Right Door");
+            currentRoom.SetActive(false);
+            Debug.Log("Neutered room");
+        }
+
+        // Entering a new room
+        if (currentRoomIndex >= visitedRooms.Count) {
+            Debug.Log("Added room");
+            currentRoom = Instantiate(roomPrefabs[RoomArray[currentRoomIndex]], Vector3.zero, Quaternion.identity);
+            visitedRooms.Add(currentRoom);
+        } 
+        
+        // Visiting a previously visited room
+        else {
+            currentRoom = visitedRooms[currentRoomIndex];
+            currentRoom.SetActive(true);
+            
+            // Loop through all the children of the currentRoom
+            foreach (Transform child in currentRoom.transform)
+            {
+                Debug.Log("mruh");
+                // Set each child game object to active
+                child.gameObject.SetActive(true);
+            }
+        }
+        
+        
+        Transform doorTransform;
+
+        // Moving to the left 
+        if (playerMovingLeft) {
+            doorTransform = currentRoom.transform.Find("Doors/Right Door");
+        }
+
+        // Moving to the right
+        else {
+            doorTransform = currentRoom.transform.Find("Doors/Left Door");
+        } 
+
+
         Vector2 entrancePosition = doorTransform.position;
         // Move the player to the entrance of the new room
         GameObject player = GameObject.FindGameObjectWithTag("Player");
