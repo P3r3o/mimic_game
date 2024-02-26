@@ -106,5 +106,6 @@ public class MapController : MonoBehaviour
         }
 
         player.transform.position = new Vector2(entrancePosition.x + offset, entrancePosition.y);
+        playerScript.doorOpen.Play();
     }
 }

@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     public int bulletsInChamber = 2;
     public bool isReloading = false; 
     public AudioSource gunSound;
+    public AudioSource reloadSound;
+    public AudioSource discardShellsSound;
+    public AudioSource deathCry;
+    public AudioSource babyGet;
+    public AudioSource doorOpen;
 
     public bool killedMonsterInRoom = false;
 
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public bool isAlive = true;
 
     public GameObject canvasGameObject;
+
+    public CameraShake cameraShake;
     
     void Update()
     {
@@ -56,6 +63,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider != null && (hit.collider.gameObject.CompareTag("Monster") || hit.collider.gameObject.CompareTag("Furniture")))
                 {
                     Shoot();
+                    StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
 
                     // If you shot a monster
                     if (hit.collider.gameObject.CompareTag("Monster")) {
@@ -67,8 +75,8 @@ public class PlayerController : MonoBehaviour
                         blood.transform.SetParent(hit.collider.gameObject.transform.parent, false);
                         Destroy(hit.collider.gameObject);
                         killedMonsterInRoom = true;
-                        bulletsInChamber = 2;
                         isReloading = false;
+                        deathCry.Play();
                     }
                 }
             }
@@ -90,6 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Baby"))
         {
+            babyGet.Play();
             Animator babyAnimator = other.gameObject.transform.GetComponent<Animator>();
             babyAnimator.SetBool("taken", true);
             movingLeft = false;
@@ -105,7 +114,8 @@ public class PlayerController : MonoBehaviour
         gunSound.Play();
         bulletsInChamber--;
 
-        if (bulletsInChamber <= 0) {
+        if (bulletsInChamber <= 0 && bulletsRemaining > 0) {
+            discardShellsSound.Play();
             StartCoroutine(Reload());
         }
     }
@@ -117,10 +127,13 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
-        if (bulletsInChamber < 2 && bulletsRemaining > 0){
-            bulletsInChamber = 2;
-        }
+        if (isAlive && bulletsInChamber == 0) {
+            if (bulletsInChamber < 2 && bulletsRemaining > 0){
+                bulletsInChamber = 2;
+            }
 
-        isReloading = false;
+            reloadSound.Play();
+            isReloading = false;
+        }
     }
 }

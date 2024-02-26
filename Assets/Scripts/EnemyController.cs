@@ -14,10 +14,13 @@ public class EnemyController : MonoBehaviour
     private float chargeTimer;
     private float waitTimer;
     private bool isCharging;
-
+    public AudioSource deathCry;
+    public AudioSource breathe;
+    public AudioSource wake;
     public GameObject gameOverScreen;
 
     void Start() {
+        wake.Play();
         chargeTimer = chargeTime;
         waitTimer = waitTime;
         isCharging = false;
@@ -27,6 +30,10 @@ public class EnemyController : MonoBehaviour
 
     // Hunting
     public void Update() {
+        if (!wake.isPlaying && !breathe.isPlaying) {
+            breathe.Play();
+        }
+
         // Rotate towards the player
         Vector2 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -85,5 +92,10 @@ public class EnemyController : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         playerScript.canvasGameObject.SetActive(true);
+        Cursor.visible = true;
+    }
+
+    void OnDestroy() {
+        breathe.Stop();
     }
 }
