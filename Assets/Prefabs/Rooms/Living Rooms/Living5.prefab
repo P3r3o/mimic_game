@@ -221,8 +221,8 @@ MonoBehaviour:
   - {fileID: 4058825994701424916}
   - {fileID: 2270522337611255092}
   - {fileID: 3216221220612825756}
-  minimumNumberOfFurniture: 2
-  maximumNumberOfFurniture: 4
+  minimumNumberOfFurniture: 4
+  maximumNumberOfFurniture: 5
 --- !u!1 &2555323732959028148
 GameObject:
   m_ObjectHideFlags: 0

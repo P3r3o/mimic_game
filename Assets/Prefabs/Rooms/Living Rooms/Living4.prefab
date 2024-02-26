@@ -740,7 +740,7 @@ MonoBehaviour:
   - {fileID: 3362520226692486040}
   - {fileID: 5736247315240500507}
   minimumNumberOfFurniture: 2
-  maximumNumberOfFurniture: 3
+  maximumNumberOfFurniture: 4
 --- !u!1001 &1147192579636208901
 PrefabInstance:
   m_ObjectHideFlags: 0
