@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
         bulletsRemainingText.text = bulletsRemaining.ToString();
 
         if (isAlive) {
+            if (bulletsInChamber <= 0 && bulletsRemaining <= 0) {
+                isReloading = true;
+            }
+
+            if (bulletsRemaining < 0) {
+                bulletsRemaining = 0;
+            }
+
             animator.SetBool("isShooting", false);
             bool isMoving = Input.GetKey(KeyCode.W);
             animator.SetBool("isWalking", isMoving);
@@ -96,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Baby"))
+        if (other.gameObject.CompareTag("Baby") && !justGotBaby)
         {
             babyGet.Play();
             Animator babyAnimator = other.gameObject.transform.GetComponent<Animator>();
