@@ -73,4 +73,10 @@ public class Furniture : MonoBehaviour
         
         this.gameObject.tag = "Monster";
     }
+
+    // Monster destroyed in hiding 
+    public void OnDestroy() {
+        playerScript.bulletsInChamber = 2;
+        playerScript.reloadSound.Play();
+    }
 }
