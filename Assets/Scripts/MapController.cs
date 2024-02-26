@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class MapController : MonoBehaviour
 {
     private GameObject playerObject;
@@ -129,6 +130,7 @@ public class MapController : MonoBehaviour
             displayImage.sprite = slide; // Set the current slide
             yield return new WaitForSeconds(slideDuration * 0.2f); // Wait for the slide duration
         }
+        SceneManager.LoadScene(0);
         // Optionally, load a new scene or trigger other actions after the slideshow
         // For example: SceneManager.LoadScene("NextSceneName");
     }
