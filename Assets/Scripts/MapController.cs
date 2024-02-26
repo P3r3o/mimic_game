@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MapController : MonoBehaviour
 {
     private GameObject playerObject;
+    public Sprite[] slides;
+    public float slideDuration = 1f;
+    private Image displayImage;
     private PlayerController playerScript;
     private bool playerMovingLeft;
 
@@ -42,6 +45,7 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
+        GameObject.Find("Map Controller/Canvas/Panel").SetActive(false);
         roomArray = GenerateRoomArray(numOfRooms, roomPrefabs.Length);
         currentRoomIndex = 0;
         ChangeRoom();
@@ -64,6 +68,15 @@ public class MapController : MonoBehaviour
         } 
 
         // Entering a new room
+        if (currentRoomIndex == -1) {
+            //victory
+            Debug.Log("WINNER");
+            GameObject.Find("Map Controller/Canvas/Panel").SetActive(true);
+            GameObject.Find("Canvas").SetActive(false);
+
+            displayImage = GetComponentInChildren<Image>();
+            StartCoroutine(PlaySlideshow());
+        }
         if (currentRoomIndex >= visitedRooms.Count) {
             currentRoom = Instantiate(roomPrefabs[roomArray[currentRoomIndex]], Vector3.zero, Quaternion.identity);
             visitedRooms.Add(currentRoom);
@@ -107,5 +120,16 @@ public class MapController : MonoBehaviour
 
         player.transform.position = new Vector2(entrancePosition.x + offset, entrancePosition.y);
         playerScript.doorOpen.Play();
+    }
+    private IEnumerator PlaySlideshow()
+    {
+        foreach (var slide in slides)
+        {
+            Debug.Log("SLIDESHOW");
+            displayImage.sprite = slide; // Set the current slide
+            yield return new WaitForSeconds(slideDuration * 0.2f); // Wait for the slide duration
+        }
+        // Optionally, load a new scene or trigger other actions after the slideshow
+        // For example: SceneManager.LoadScene("NextSceneName");
     }
 }
